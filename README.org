@@ -56,6 +56,16 @@ If you use both MELPA and =use-package=, you can use this, too:
   (project-tab-groups-mode 1))
 #+end_src
 
+If you happen to use the [[https://github.com/fritzgrabo/tab-bar-echo-area][tab-bar-echo-area]] package, you'll want to add
+this to your Emacs initialization file somewhere to display tabs / tab
+groups after switching projects.
+
+#+begin_src emacs-lisp
+(with-eval-after-load 'tab-bar-echo-area
+  (push #'project-switch-project tab-bar-echo-area-trigger-display-functions)
+  (tab-bar-echo-area-apply-display-tab-names-advice))
+#+end_src
+
 * Limitations
 
 This package does not allow managing tabs / tab groups of projects
@@ -65,6 +75,9 @@ across multiple frames (=C-x 5 p f=, etc.) yet.
 
 - [[https://github.com/fritzgrabo/tab-bar-groups][tab-bar-groups]] to further customize the appearance of individual tab
   groups.
+
+- [[https://github.com/fritzgrabo/tab-bar-echo-area][tab-bar-echo-area]] to temporarily display a list of available tabs and
+  tab groups in the echo area after tab-related commands.
 
 - [[https://github.com/fritzgrabo/cascading-dir-locals][cascading-dir-locals]] to allow for setting project-related dir-local
   variables /in addition/ to more global ones.
