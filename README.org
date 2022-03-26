@@ -71,7 +71,7 @@ groups after switching projects.
 This package does not allow managing tabs / tab groups of projects
 across multiple frames (=C-x 5 p f=, etc.) yet.
 
-* Related / Supplementary Packages
+* Related, Supplementary, Alternative Packages
 
 - [[https://github.com/fritzgrabo/tab-bar-groups][tab-bar-groups]] to further customize the appearance of individual tab
   groups.
@@ -81,3 +81,7 @@ across multiple frames (=C-x 5 p f=, etc.) yet.
 
 - [[https://github.com/fritzgrabo/cascading-dir-locals][cascading-dir-locals]] to allow for setting project-related dir-local
   variables /in addition/ to more global ones.
+
+- [[https://github.com/mclear-tools/tabspaces][tabspaces]], to leverage the Emacs tab bar and the Emacs built-in
+  project.el to create buffer-isolated workspaces that also integrate
+  with version-controlled projects.
