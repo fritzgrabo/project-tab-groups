@@ -100,7 +100,7 @@ Otherwise, select or create the first tab in a tab group that
 represents the selected project."
   (let* ((result (funcall orig-fun args))
          (maybe-prompt (car args))
-         (project-dir (cdr result)))
+         (project-dir (and result (project-root result))))
     (when (and maybe-prompt project-dir)
       (let ((current-tab-group-name (alist-get 'group (tab-bar--current-tab)))
             (destination-tab-group-name (funcall project-tab-groups-tab-group-name-function project-dir)))
