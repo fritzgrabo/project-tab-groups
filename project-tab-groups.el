@@ -5,7 +5,7 @@
 ;; Author: Fritz Grabo <hello@fritzgrabo.com>
 ;; URL: https://github.com/fritzgrabo/project-tab-groups
 ;; Version: 0.1
-;; Package-Requires: ((emacs "28"))
+;; Package-Requires: ((emacs "28.1"))
 ;; Keywords: convenience
 
 ;; This file is not part of GNU Emacs.
