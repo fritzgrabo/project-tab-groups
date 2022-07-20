@@ -98,7 +98,7 @@ a tab group that represents the selected project.
 
 Otherwise, select or create the first tab in a tab group that
 represents the selected project."
-  (let* ((result (funcall orig-fun args))
+  (let* ((result (apply orig-fun args))
          (maybe-prompt (car args))
          (project-dir (and result (project-root result))))
     (when (and maybe-prompt project-dir)
@@ -119,7 +119,7 @@ represents the selected project."
 
 (defun project-tab-groups--project-kill-buffers-advice (orig-fun &rest args)
   "Call ORIG-FUN with ARGS, then close the current tab group, if any."
-  (when (funcall orig-fun args)
+  (when (apply orig-fun args)
     (when-let ((tab-group-name (alist-get 'group (tab-bar--current-tab))))
       (tab-bar-close-group-tabs tab-group-name))))
 
