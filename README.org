@@ -25,10 +25,13 @@ isolated in separate, named tab groups:
   closing all its buffers.
 
 Finding the name to use for the tab group of a project is customizable
-via =project-tab-groups-tab-group-name-function=. In its default
-setting, it looks for [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Directory-Local-Variables.html][dir-local variables]] named =tab-group-name= or
-=project-name=, and falls back to the project's directory name if none
-of these are set.
+via =project-tab-groups-tab-group-name-function=. In its default setting,
+it looks for [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Directory-Local-Variables.html][dir-local variables]] named =tab-group-name= or =project-name=,
+and falls back to the project's directory name if none of these are set.
+In addition, if one of =tab-group-name-template= or =project-name-template=
+is present, it is used as the format-string in a call to =format=. The
+format-string is expected to have a single ="%s"= sequence which will be
+substituted by the project name.
 
 * Compatibility
 

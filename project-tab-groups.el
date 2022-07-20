@@ -53,15 +53,23 @@ contained project.")
 (defun project-tab-groups-tab-group-name (dir)
   "Derive tab group name for DIR.
 
-Returns the value of directory-local variables `tab-group-name'
-or `project-name', if present, and falls back to the directory
-file name otherwise."
-  (or (with-temp-buffer
-        (setq default-directory dir)
-        (hack-dir-local-variables-non-file-buffer)
-        (or (and (boundp 'tab-group-name) tab-group-name)
-            (and (boundp 'project-name) project-name)))
-      (file-name-nondirectory (directory-file-name dir))))
+Returns the value of `tab-group-name' or `project-name', if
+present, and falls back to the directory file name otherwise.
+
+In addition, uses `tab-group-name-template' or
+`project-name-template', if present, as the format-string in a
+call to `format'. The format-string is expected to have a single
+\"%s\" sequence which will be substituted by the project name."
+  (with-temp-buffer
+    (setq default-directory dir)
+    (hack-dir-local-variables-non-file-buffer)
+    (let ((name (or (and (boundp 'tab-group-name) tab-group-name)
+                    (and (boundp 'project-name) project-name)
+                    (file-name-nondirectory (directory-file-name dir))))
+          (name-template (or (and (boundp 'tab-group-name-template) tab-group-name-template)
+                             (and (boundp 'project-name-template) project-name-template)
+                             "%s")))
+      (format name-template name))))
 
 (defun project-tab-groups--find-tab-by-group-name (tab-group-name)
   "Find the first tab that belongs to a group named TAB-GROUP-NAME."
