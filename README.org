@@ -1,7 +1,8 @@
 * project-tab-groups.el
 
-Provides a global minor mode that enhances the Emacs built-in [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Projects.html][project.el]]
-library to support keeping projects isolated in named tab groups.
+Provides a global minor mode that enhances the Emacs built-in
+[[https://www.gnu.org/software/emacs/manual/html_node/emacs/Projects.html][project.el]] library to support keeping projects isolated in named tab
+groups.
 
 To "support" means that it automates the steps you'd otherwise need to
 do manually if you wanted to keep the buffers of a project neatly
@@ -14,39 +15,44 @@ isolated in separate, named tab groups:
 
 - The same goes for any of the project-related commands like finding a
   file of a project via =project-find-file= (=C-x p f=), or finding the
-  project root directory, running an eshell, etc: if a tab group for the
-  selected or current project exists and you're not in it already, it
-  will switch to it before running the command. Otherwise, it will
+  project root directory, running an eshell, etc: if a tab group for
+  the selected or current project exists and you're not in it already,
+  it will switch to it before running the command. Otherwise, it will
   create a new, named tab group for the selected project and run the
   command there.
 
-- Closing a project via =project-kill-buffers= (=C-x p k=) will close
-  all tabs of the selected or current project's tab group in addition to
+- Closing a project via =project-kill-buffers= (=C-x p k=) will close all
+  tabs of the selected or current project's tab group in addition to
   closing all its buffers.
 
 Finding the name to use for the tab group of a project is customizable
-via =project-tab-groups-tab-group-name-function=. In its default setting,
-it looks for [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Directory-Local-Variables.html][dir-local variables]] named =tab-group-name= or =project-name=,
-and falls back to the project's directory name if none of these are set.
-In addition, if one of =tab-group-name-template= or =project-name-template=
-is present, it is used as the format-string in a call to =format=. The
-format-string is expected to have a single ="%s"= sequence which will be
-substituted by the project name.
+via =project-tab-groups-tab-group-name-function=. In its default
+setting, it looks for [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Directory-Local-Variables.html][dir-local variables]] named =tab-group-name= or
+=project-name=, and falls back to the project's directory name if none
+of these are set.
+
+In addition, if one of =tab-group-name-template= or
+=project-name-template= is present, it is used as the format-string in a
+call to =format= to further customize the tab group name. The
+format-string is expected to have a single =%s= sequence which will be
+substituted with the current tab group name. This can be useful if you
+want to have all projects in a directory share a common prefix, for
+example.
 
 * Compatibility
 
 This package currently requires Emacs 28 for its native support of tab
 bar groups.
 
-There's a backport of tab bar group functionality available for Emacs 27
-in the [[https://github.com/fritzgrabo/tab-bar-groups][tab-bar-groups]] package, and making this package work with it
+There's a backport of tab bar group functionality available for Emacs
+27 in the [[https://github.com/fritzgrabo/tab-bar-groups][tab-bar-groups]] package, and making this package work with it
 should not be too much effort. Please contact me if you're interested.
 
 * Installation
 
 If you use MELPA, an easy way to install this package is via
-=package-install=. Alternatively, download =project-tab-groups.el=, put
-it in your =load-path= and =require= it. Finally, use
+=package-install=. Alternatively, download =project-tab-groups.el=, put it
+in your =load-path= and =require= it. Finally, use
 =(project-tab-groups-mode 1)= or =M-x project-tab-groups= to turn on the
 provided features.
 
@@ -79,8 +85,8 @@ across multiple frames (=C-x 5 p f=, etc.) yet.
 - [[https://github.com/fritzgrabo/tab-bar-groups][tab-bar-groups]] to further customize the appearance of individual tab
   groups.
 
-- [[https://github.com/fritzgrabo/tab-bar-echo-area][tab-bar-echo-area]] to temporarily display a list of available tabs and
-  tab groups in the echo area after tab-related commands.
+- [[https://github.com/fritzgrabo/tab-bar-echo-area][tab-bar-echo-area]] to temporarily display a list of available tabs
+  and tab groups in the echo area after tab-related commands.
 
 - [[https://github.com/fritzgrabo/cascading-dir-locals][cascading-dir-locals]] to allow for setting project-related dir-local
   variables /in addition/ to more global ones.
