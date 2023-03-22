@@ -77,8 +77,14 @@ groups after switching projects.
 
 * Limitations
 
-This package does not allow managing tabs / tab groups of projects
-across multiple frames (=C-x 5 p f=, etc.) yet.
+- This package does not allow managing tabs / tab groups of projects
+  across multiple frames (=C-x 5 p f=, etc.) yet.
+
+- If you happen to use both =tab-bar= and =tab-line=, you'll notice that
+  the current buffer remains visible in the tab line after switching
+  to a new project, even though that buffer doesn't belong to the
+  project. [[https://github.com/fritzgrabo/project-tab-groups/issues/1][Issue #1]] has a discussion of the problem and provides a
+  fix as well.
 
 * Related, Supplementary, Alternative Packages
 
