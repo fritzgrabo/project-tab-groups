@@ -29,7 +29,8 @@ Finding the name to use for the tab group of a project is customizable
 via =project-tab-groups-tab-group-name-function=. In its default
 setting, it looks for [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Directory-Local-Variables.html][dir-local variables]] named =tab-group-name= or
 =project-name=, and falls back to the project's directory name if none
-of these are set.
+of these are set.  Note that this is about tab *groups, which are not
+visible by default* - see [[https://github.com/fritzgrabo/project-tab-groups/issues/2][this issue]] for what to do.
 
 In addition, if one of =tab-group-name-template= or
 =project-name-template= is present, it is used as the format-string in a
