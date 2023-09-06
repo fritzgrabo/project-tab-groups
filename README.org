@@ -4,9 +4,13 @@ Provides a global minor mode that enhances the Emacs built-in
 [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Projects.html][project.el]] library to support keeping projects isolated in named tab
 groups.
 
-To "support" means that it automates the steps you'd otherwise need to
-do manually if you wanted to keep the buffers of a project neatly
-isolated in separate, named tab groups:
+Note that by default, Emacs does not display tab /groups/ in the tab
+bar; please see the note about grouping tabs in =C-h v tab-bar-format=
+([[https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/tab-bar.el#n863][link]]) or [[https://github.com/fritzgrabo/project-tab-groups/issues/2#issuecomment-1551909586][Issue #2]] for more details.
+
+This package automates the steps you'd otherwise need to do manually
+if you wanted to keep the buffers of a project neatly isolated in
+separate, named tab groups:
 
 - Switching to another project via =project-switch-project= (=C-x p p=)
   will instead select a tab in the tab group of that project, if it
@@ -29,8 +33,7 @@ Finding the name to use for the tab group of a project is customizable
 via =project-tab-groups-tab-group-name-function=. In its default
 setting, it looks for [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Directory-Local-Variables.html][dir-local variables]] named =tab-group-name= or
 =project-name=, and falls back to the project's directory name if none
-of these are set.  Note that this is about tab *groups, which are not
-visible by default* - see [[https://github.com/fritzgrabo/project-tab-groups/issues/2][this issue]] for what to do.
+of these are set.
 
 In addition, if one of =tab-group-name-template= or
 =project-name-template= is present, it is used as the format-string in a
