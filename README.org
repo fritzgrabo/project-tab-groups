@@ -4,10 +4,6 @@ Provides a global minor mode that enhances the Emacs built-in
 [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Projects.html][project.el]] library to support keeping projects isolated in named tab
 groups.
 
-Note that by default, Emacs does not display tab /groups/ in the tab
-bar; please see the note about grouping tabs in =C-h v tab-bar-format=
-([[https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/tab-bar.el#n863][link]]) or [[https://github.com/fritzgrabo/project-tab-groups/issues/2#issuecomment-1551909586][Issue #2]] for more details.
-
 This package automates the steps you'd otherwise need to do manually
 if you wanted to keep the buffers of a project neatly isolated in
 separate, named tab groups:
@@ -28,6 +24,10 @@ separate, named tab groups:
 - Closing a project via =project-kill-buffers= (=C-x p k=) will close all
   tabs of the selected or current project's tab group in addition to
   closing all its buffers.
+
+Note that by default, Emacs does not display tab /groups/ in the tab
+bar; please see the note about grouping tabs in =C-h v tab-bar-format=
+([[https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/tab-bar.el#n863][link]]) or [[https://github.com/fritzgrabo/project-tab-groups/issues/2#issuecomment-1551909586][Issue #2]] for more details.
 
 Finding the name to use for the tab group of a project is customizable
 via =project-tab-groups-tab-group-name-function=. In its default
