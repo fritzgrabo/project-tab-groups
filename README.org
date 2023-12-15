@@ -32,10 +32,11 @@ bar; please see the note about grouping tabs in =C-h v tab-bar-format=
 * Customization Options
 
 Finding the name to use for the tab group of a project is customizable
-via =project-tab-groups-tab-group-name-function=. In its default
-setting, it looks for [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Directory-Local-Variables.html][dir-local variables]] named =tab-group-name= or
-=project-name=, and falls back to the project's directory name if none
-of these are set.
+via =project-tab-groups-tab-group-name-function=. The default
+implementation looks for [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Directory-Local-Variables.html][dir-local variables]] named =tab-group-name= or
+=project-name=. If none of these are set, it calls the =project-name=
+function if it exists (Emacs 29), and falls back to the project's
+directory name otherwise.
 
 In addition, if one of =tab-group-name-template= or
 =project-name-template= is present, it is used as the format-string in a

@@ -61,10 +61,12 @@ argument and to return the tab group name to represent the
 contained project.")
 
 (defun project-tab-groups-tab-group-name (dir)
-  "Derive tab group name for DIR.
+  "Derive tab group name for project in DIR.
 
 Returns the value of `tab-group-name' or `project-name', if
-present, and falls back to the directory file name otherwise.
+present. Otherwise, calls the `project-name' function, if it
+exists (Emacs 29). If none of those worked, falls back to the
+directory file name.
 
 In addition, uses `tab-group-name-template' or
 `project-name-template', if present, as the format-string in a
@@ -75,6 +77,9 @@ call to `format'. The format-string is expected to have a single
     (hack-dir-local-variables-non-file-buffer)
     (let ((name (or (and (boundp 'tab-group-name) tab-group-name)
                     (and (boundp 'project-name) project-name)
+                    (and (fboundp 'project-name)
+                         (when-let ((project-current (project-current)))
+                           (project-name project-current)))
                     (file-name-nondirectory (directory-file-name dir))))
           (name-template (or (and (boundp 'tab-group-name-template) tab-group-name-template)
                              (and (boundp 'project-name-template) project-name-template)
