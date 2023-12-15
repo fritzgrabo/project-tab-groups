@@ -29,6 +29,8 @@ Note that by default, Emacs does not display tab /groups/ in the tab
 bar; please see the note about grouping tabs in =C-h v tab-bar-format=
 ([[https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/tab-bar.el#n863][link]]) or [[https://github.com/fritzgrabo/project-tab-groups/issues/2#issuecomment-1551909586][Issue #2]] for more details.
 
+* Customization Options
+
 Finding the name to use for the tab group of a project is customizable
 via =project-tab-groups-tab-group-name-function=. In its default
 setting, it looks for [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Directory-Local-Variables.html][dir-local variables]] named =tab-group-name= or
@@ -42,6 +44,13 @@ format-string is expected to have a single =%s= sequence which will be
 substituted with the current tab group name. This can be useful if you
 want to have all projects in a directory share a common prefix, for
 example.
+
+Finally, =project-tab-groups-reconnect-tab= controls what to do when
+=project-switch-project= selected an existing tab and found its current
+buffer's working directory to be outside of the project. It accepts a
+function which is called with the switched-to project's root directory
+as its single argument. Alternatively, a value of =t= (default) shows
+the project dispatch menu, and =nil= does nothing.
 
 * Compatibility
 

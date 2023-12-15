@@ -42,6 +42,16 @@
   "When non-nil, preserve the current groupless tab when switching projects."
   :type '(boolean))
 
+(defcustom project-tab-groups-reconnect-tab t
+  "Whether to reconnect a disconnected tab when switching to it.
+
+When set to a function's symbol, that function will be called
+with the switched-to project's root directory as its single
+argument.
+
+When non-nil, show the project dispatch menu instead."
+  :type '(choice function boolean))
+
 (defvar project-tab-groups-tab-group-name-function
   #'project-tab-groups-tab-group-name
   "Function to find the tab group name for a directory.
@@ -122,8 +132,13 @@ represents the selected project."
   "Switch to the selected project's tab if it exists, call ORIG-FUN with ARGS otherwise."
   (let ((project-dir (or (car args) (project-prompt-project-dir))))
     (let ((tab-group-name (funcall project-tab-groups-tab-group-name-function project-dir)))
-      (when (project-tab-groups--select-or-create-tab-group tab-group-name)
-        (funcall orig-fun project-dir)))))
+      (if (project-tab-groups--select-or-create-tab-group tab-group-name)
+          (funcall orig-fun project-dir)
+        (if (not (file-in-directory-p default-directory project-dir))
+            (if (functionp project-tab-groups-reconnect-tab)
+                (funcall project-tab-groups-reconnect-tab project-dir)
+              (when project-tab-groups-reconnect-tab
+                (funcall orig-fun project-dir))))))))
 
 (defun project-tab-groups--project-kill-buffers-advice (orig-fun &rest args)
   "Call ORIG-FUN with ARGS, then close the current tab group, if any."
