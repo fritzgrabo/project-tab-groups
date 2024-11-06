@@ -29,6 +29,12 @@ Note that by default, Emacs does not display tab /groups/ in the tab
 bar; please see the note about grouping tabs in =C-h v tab-bar-format=
 ([[https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/tab-bar.el#n863][link]]) or [[https://github.com/fritzgrabo/project-tab-groups/issues/2#issuecomment-1551909586][Issue #2]] for more details.
 
+Note also that this package concerns itself with managing tab groups
+in the context of project.el-based projects only. If you're looking
+for a more generalized approach with some amazingly clever ideas,
+definitely check out the fabulous [[https://github.com/MArpogaus/auto-tab-groups][auto-tab-groups]] package by Marcel
+Arpogaus.
+
 * Customization Options
 
 Finding the name to use for the tab group of a project is customizable
@@ -114,3 +120,9 @@ groups after switching projects.
 - [[https://github.com/mclear-tools/tabspaces][tabspaces]], to leverage the Emacs tab bar and the Emacs built-in
   project.el to create buffer-isolated workspaces that also integrate
   with version-controlled projects.
+
+- [[https://github.com/MArpogaus/auto-tab-groups][auto-tab-groups]] for automated tab group management for Emacs,
+  allowing you to associate commands with specific tab groups, and more!
+
+- [[https://github.com/alphapapa/activities.el][activities]], which allows the user to manage frames/tabs, windows,
+  and buffers according to their purpose.
